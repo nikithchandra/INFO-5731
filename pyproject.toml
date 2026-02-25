@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "info-5731"
+version = "0.1.0"
+description = "A modern Python web application using FastAPI"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn[standard]==0.24.0",
+    "pydantic==2.5.2",
+    "pydantic-settings==2.1.0",
+    "python-multipart==0.0.6",
+    "langchain>=0.2.5",
+    "google-generativeai>=0.8.6",
+    "pytest-asyncio>=0.22.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==7.4.3",
+    "pytest-asyncio==0.22.0",
+    "httpx==0.25.2",
+    "black==23.12.1",
+    "flake8==6.1.0",
+    "mypy==1.7.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/fastapi-application"
+Documentation = "https://github.com/yourusername/fastapi-application/wiki"
+Repository = "https://github.com/yourusername/fastapi-application.git"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+asyncio_mode = "auto"
